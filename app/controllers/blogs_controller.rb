@@ -4,9 +4,9 @@ class BlogsController < ApplicationController
     
     cate = params[:cate]
     if !cate.nil?
-        @blogs = Blog.where(:category_id => cate)
+      @pagy, @blogs = pagy(Blog.where(:category_id => cate))
     else
-      @blogs = Blog.all
+      @pagy, @blogs = pagy(Blog.all)
     end
 
   end

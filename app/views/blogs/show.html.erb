@@ -1,5 +1,5 @@
 
-<div class="flex-row d-flex justify-content-center">
+<div class="flex-row d-flex justify-content-center mb-5">
     <div class="col-md-8">
     <div class="card mt-5">
             <div class="card-body">
@@ -9,7 +9,7 @@
 
 <div class="text-center">
 <% if @blog.image.attached? %>
-    <%= image_tag(@blog.image, style:"height: 300px;") %>
+    <%= image_tag(@blog.image, class: "img-fluid", style:"max-height: 300px;") %>
 <% end %>
 </div>
 
@@ -17,7 +17,7 @@
 
 <div style="float: right;">
 <%= link_to "Edit", edit_blog_path(@blog.id), class: 'btn btn-primary' %>
-<%= link_to "Delete", blogs_path(@blog.id), method: 'delete', data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
+<%= link_to "Delete", blog_path(@blog), method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger' %>
 <%= link_to "Back", blogs_path, class: 'btn btn-secondary' %>
 </div
 

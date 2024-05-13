@@ -69,3 +69,8 @@ end
 
 gem "bootstrap"
 gem "sassc-rails"
+gem "device", "~> 0.0.0"
+
+gem "devise", "~> 4.9"
+
+gem 'pagy'

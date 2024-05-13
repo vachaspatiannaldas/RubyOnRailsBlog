@@ -8,29 +8,46 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-
- 
-
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   </head>
 
   <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand"><%= link_to "BlogApp", blogs_path, class: 'nav-link' %></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item active">
-          <%= link_to "Create Blog", new_blog_path, class: 'nav-link' %>
-        </li>
-        
-    </div>
-  </div>
-</nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <a class="navbar-brand"><%= link_to "BlogApp", blogs_path, class: 'nav-link' %></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ms-auto">
+            <% if user_signed_in? %>
+              <li class="nav-item active">
+                <%= link_to "Create Blog", new_blog_path, class: 'nav-link' %>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="far fa-user"></i>
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <li><%= link_to 'Edit Profile', edit_user_registration_path, class: 'dropdown-item' %></li>
+                  <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %></li>
+                </ul>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to new_user_session_path, class: 'nav-link' do %>
+                  <i class="fas fa-user"></i>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <p class="notice" style="text-align:center; color: green;"><%= notice %></p>
+    <p class="alert" style="text-align:center; color: red;"><%= alert %></p>
 
     <%= yield %>
-
   </body>
 </html>

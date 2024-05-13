@@ -10,9 +10,15 @@
                     <div class="card-body">
                         <h4> <%= link_to blog.title, blog_path(blog.id) %> </h4>
                         <% if blog.image.attached? %>
-                            <%= image_tag(blog.image, style:"height: 250px;") %>
+                            <%= image_tag(blog.image) %>
                         <% end %>
-                        <%= link_to "View", blog_path(blog.id), class: 'btn btn-primary' %>
+                        <% if user_signed_in? %>
+                            <%= link_to "View", blog_path(blog.id), class: 'btn btn-primary mt-2' %>
+                        <% else %>
+                        <%= link_to new_user_session_path, class: 'nav-link' do %>
+                            <p class="btn btn-warning mt-2"> Login to view blog</p>
+                        <% end %>
+                        <% end %>
                     </div>
                 </div>
                 </div>
@@ -37,6 +43,10 @@
                 </div>
             </div>
         </div>
+         
+        <div class="page mt-5">
+            <%== pagy_bootstrap_nav(@pagy) %>
+         </div>               
     </div>
 </div>
 
@@ -46,29 +56,38 @@
         text-decoration: none;
         color: #000;
     }
+    img{
+        width: 370px;
+        height: 230px;
+    }
     @media screen and (max-width: 1025px) {
         img {
             height: 170px!important;
+            width: 270px;
         }
     }
     @media screen and (max-width: 770px) {
         img {
             height: 120px!important;
+            width: 195px;
         }
     }
     @media screen and (max-width: 430px) {
         img {
             height: 230px!important;
+            width: 370px;
         }
     }
     @media screen and (max-width: 380px) {
         img {
             height: 200px!important;
+            width: 330px;
         }
     }
     @media screen and (max-width: 325px) {
         img {
             height: 170px!important;
+            width: 275px;
         }
     }
 </style>
