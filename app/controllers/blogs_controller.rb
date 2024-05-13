@@ -1,6 +1,14 @@
 class BlogsController < ApplicationController
   def index
-    @blogs = Blog.all
+    @categories = Category.all
+    
+    cate = params[:cate]
+    if !cate.nil?
+        @blogs = Blog.where(:category_id => cate)
+    else
+      @blogs = Blog.all
+    end
+
   end
 
   def show
@@ -37,14 +45,13 @@ class BlogsController < ApplicationController
 
   def destroy
     @blog = Blog.find(params[:id])
-  
     @blog.destroy
-    redirect_to :action => :index
+    redirect_to blogs_path, notice: 'Blog was successfully destroyed.'
   end
 
   private
   def blog_params
-    params.require(:blog).permit(:title, :content, :category_id)
+    params.require(:blog).permit(:title, :content, :category_id, :image)
   end
 
 end

@@ -1,16 +1,75 @@
 
 <div class="container">
     <div class="row">
-        <% @blogs.each do |blog| %>
+
+        <div class="col-md-8">
+            <div class="row">
+            <% @blogs.each do |blog| %>
+                <div class="col-md-6">
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h4> <%= link_to blog.title, blog_path(blog.id) %> </h4>
+                        <% if blog.image.attached? %>
+                            <%= image_tag(blog.image, style:"height: 250px;") %>
+                        <% end %>
+                        <%= link_to "View", blog_path(blog.id), class: 'btn btn-primary' %>
+                    </div>
+                </div>
+                </div>
+            <% end %>
+            </div>
+        </div>
+
         <div class="col-md-4">
             <div class="card mt-3">
+                <div class="card-header">
+                    Categories
+                </div>
                 <div class="card-body">
-                    <h3> <%= link_to blog.title, blog_path(blog.id) %> </h3>
-                    <%= link_to "View", blog_path(blog.id), class: 'btn btn-primary' %>
+                    <ul class="list-group">
+                    <% @categories.each do |category| %>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <%= link_to category.category, blogs_path(:cate => category.id) %>
+                            <span> <%= category.blogs.count %></span>
+                        </li>
+                    <% end %>   
+                    </ul>
                 </div>
             </div>
         </div>
-        <% end %>
     </div>
 </div>
+
+
+<style>
+    a{
+        text-decoration: none;
+        color: #000;
+    }
+    @media screen and (max-width: 1025px) {
+        img {
+            height: 170px!important;
+        }
+    }
+    @media screen and (max-width: 770px) {
+        img {
+            height: 120px!important;
+        }
+    }
+    @media screen and (max-width: 430px) {
+        img {
+            height: 230px!important;
+        }
+    }
+    @media screen and (max-width: 380px) {
+        img {
+            height: 200px!important;
+        }
+    }
+    @media screen and (max-width: 325px) {
+        img {
+            height: 170px!important;
+        }
+    }
+</style>
 
