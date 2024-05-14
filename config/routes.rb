@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   # get 'blogs/edit'
 
   resources :blogs
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root to: "blogs#index"
   devise_scope :user do

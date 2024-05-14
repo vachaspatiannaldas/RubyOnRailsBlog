@@ -8,6 +8,7 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
     <%= javascript_include_tag 'application' %>
@@ -17,7 +18,7 @@
   <body>
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand"><%= link_to "BlogApp", blogs_path, class: 'nav-link' %></a>
+        <a class="navbar-brand"><%= link_to "BlogApp", blogs_path, class: 'nav-link', style:"color: #473a5e;" %></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -44,6 +45,7 @@
               </li>
             <% end %>
           </ul>
+          
         </div>
       </div>
     </nav>

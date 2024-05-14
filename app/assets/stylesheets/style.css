@@ -1,0 +1,37 @@
+body{
+    background-color: #e6e1ed;
+}
+
+.card{
+    background-color: #817691;
+    color: #fff;
+    border-color: #817691;
+}
+
+.card-body ul li{
+    background-color: #beb8c7;
+}
+
+.card-body ul li a{
+    color: #473a5e;
+}
+
+.card-body ul li span{
+    color: #473a5e
+}
+
+.btn-primary{
+    background-color: #e6e1ed;
+    border-color: #e6e1ed;
+    color: #473a5e;
+}
+
+.btn-primary:hover{
+    background-color: #473a5e;
+    border-color: #473a5e;
+    color: #e6e1ed;
+}
+
+.loginreg a{
+    color: #e6e1ed;
+}

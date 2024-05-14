@@ -24,8 +24,8 @@
                         <%= f.select :category_id, Category.all.map {|c| [c.category, c.id]} %>
                     </div>
 
-                    <%= f.submit "Create Blog", class: 'btn btn-outline-primary mt-3' %>
-                    <%= link_to "Back", blogs_path, class: 'btn btn-outline-secondary mt-3' %>
+                    <%= f.submit "Create Blog", class: 'btn btn-primary mt-3' %>
+                    <%= link_to "Back", blogs_path, class: 'btn btn-light mt-3' %>
                 
                 <% end %>
             </div>
