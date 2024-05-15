@@ -26,7 +26,7 @@
             </div>
         </div>
 
-        <div class="col-md-4 mt-3">
+        <div class="col-md-4 mt-3 order-mobile-first">
             <%= search_form_for @q, html: { class: "d-flex" } do |f| %>
                 <div class="input-group me-3">
                 <%= f.text_field :title_cont, class: "form-control", placeholder: "Search by title" %>
@@ -97,5 +97,16 @@
             width: 275px;
         }
     }
+
+    @media screen and (max-width: 767px) {
+        .order-mobile-first {
+            order: -1; 
+        }
+
+        .order-mobile-second {
+            order: 1; 
+        }
+    }
+    
 </style>
 
