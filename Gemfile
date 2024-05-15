@@ -76,3 +76,5 @@ gem "devise", "~> 4.9"
 gem 'pagy'
 
 gem 'webpacker', '~> 5.0'
+
+gem 'ransack'

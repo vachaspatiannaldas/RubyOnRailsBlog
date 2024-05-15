@@ -1,13 +1,19 @@
 class BlogsController < ApplicationController
   def index
-    @categories = Category.all
-    
-    cate = params[:cate]
-    if !cate.nil?
-      @pagy, @blogs = pagy(Blog.where(:category_id => cate))
-    else
-      @pagy, @blogs = pagy(Blog.all)
+    @q = Blog.ransack(params[:q])
+    @blogs = @q.result(distinct: true)
+    @blogs = Blog.all if @q.result.none?
+
+     # Check if category filter parameter is present
+     if params[:cate].present?
+      @blogs = @blogs.where(category_id: params[:cate])
     end
+
+    # Paginate the filtered blogs
+    @pagy, @blogs = pagy(@blogs)
+
+    # Retrieve all categories for the sidebar
+    @categories = Category.all
 
   end
 

@@ -32,6 +32,19 @@ body{
     color: #e6e1ed;
 }
 
+.search1{
+    background-color: #473a5e;
+    border-color: #473a5e;
+    color: #e6e1ed;
+}
+
+.search1:hover{
+    background-color: #beb8c7;
+    border-color: #beb8c7;
+    color: #473a5e;
+}
+
+
 .loginreg a{
     color: #e6e1ed;
 }

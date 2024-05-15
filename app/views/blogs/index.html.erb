@@ -1,7 +1,6 @@
 
 <div class="container">
     <div class="row">
-
         <div class="col-md-8">
             <div class="row">
             <% @blogs.each do |blog| %>
@@ -27,7 +26,13 @@
             </div>
         </div>
 
-        <div class="col-md-4">
+        <div class="col-md-4 mt-3">
+            <%= search_form_for @q, html: { class: "d-flex" } do |f| %>
+                <div class="input-group me-3">
+                <%= f.text_field :title_cont, class: "form-control", placeholder: "Search by title" %>
+                <button type="submit" class="btn btn-primary search1">Search</button>
+                </div>
+            <% end %>
             <div class="card mt-3">
                 <div class="card-header">
                     Categories
@@ -60,6 +65,7 @@
     img{
         width: 370px;
         height: 230px;
+        border-radius: 5px;
     }
     @media screen and (max-width: 1025px) {
         img {
